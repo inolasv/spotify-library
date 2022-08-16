@@ -68,7 +68,8 @@ app.get('/callback', (req, res) => {
         }),
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            Authorization: `Basic ${buffer.toString('base64')}`
+            Authorization: `Basic ${buffer.toString('base64')}`,
+            "Access-Control-Allow-Origin": "*"
         }
     })
         .then(response => {
@@ -82,7 +83,7 @@ app.get('/callback', (req, res) => {
                     expires_in
                 })
                 // redirect to the app again with the access and refresh tokens
-                res.redirect(`http://localhost:3000/?${params}`)
+                res.redirect(`http://192.168.86.22:3000/?${params}`)
 
                 // const { refresh_token } = response.data;
 
@@ -143,7 +144,8 @@ app.get('/refresh_token', (req, res) => {
         data: params,
         headers: {
             'content-type': 'application/x-www-form-urlencoded',
-            Authorization: `Basic ${buffer.toString('base64')}`
+            Authorization: `Basic ${buffer.toString('base64')}`,
+            "Access-Control-Allow-Origin": "*"
         }
 
     })
