@@ -1,10 +1,12 @@
 const express = require('express');
 const axios = require('axios');
-require('dotenv/config');
+const path = require('path');
+
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 
 const app = express()
-const port = 8888;
+const port = 8080;
 
 
 app.get('/',  (req, res) => {
@@ -21,6 +23,8 @@ app.get('/',  (req, res) => {
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
+
+console.log(REDIRECT_URI);
 
 // Generates a random string of 'length' size.
 const generateRandomString = (length) => {
@@ -83,11 +87,11 @@ app.get('/callback', (req, res) => {
                     expires_in
                 })
                 // redirect to the app again with the access and refresh tokens
-                res.redirect(`http://192.168.86.22:3000/?${params}`)
+                res.redirect(`http://localhost:3000/?${params}`)
 
                 // const { refresh_token } = response.data;
 
-                // axios.get(`http://localhost:8888/refresh_token?refresh_token=${refresh_token}`)
+                // axios.get(`http://localhost:8080/refresh_token?refresh_token=${refresh_token}`)
                 //   .then(response => {
                 //     res.send(`<pre>${JSON.stringify(response.data, null, 2)}</pre>`);
                 //   })
@@ -159,7 +163,7 @@ app.get('/refresh_token', (req, res) => {
 
 
 
-// startapp on port 8888
+// startapp on port 8080
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`)
 })

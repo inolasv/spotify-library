@@ -19,7 +19,7 @@ const StyledLoginButton = styled.a`
 
 const Login = () => (
     <StyledLoginContainer>
-        <StyledLoginButton href="http://192.168.86.22:8888/login"> 
+        <StyledLoginButton href="http://localhost:8080/login"> 
             Log In
         </StyledLoginButton>
     </StyledLoginContainer>
