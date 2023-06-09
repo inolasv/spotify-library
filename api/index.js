@@ -9,7 +9,7 @@ const app = express()
 const port = 8080;
 
 
-app.get('/',  (req, res) => {
+app.get('/api',  (req, res) => {
     const data = {
         "test": "this",
         "working": true
@@ -39,7 +39,7 @@ const generateRandomString = (length) => {
 
 const stateKey = 'spotify_auth_state'
 
-app.get('/login', (req, res) => {
+app.get('/api/login', (req, res) => {
     const state = generateRandomString(16)
     res.cookie(stateKey, state)
 
@@ -58,7 +58,7 @@ app.get('/login', (req, res) => {
 });
 
 
-app.get('/callback', (req, res) => {
+app.get('/api/callback', (req, res) => {
     const code = (req.query.code || null)
     const buffer = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`)
 
@@ -132,7 +132,7 @@ app.get('/callback', (req, res) => {
 
 // optional, but better for the user:
 // uses the refresh token so they user isnt signed out after the access token expires
-app.get('/refresh_token', (req, res) => {
+app.get('/api/refresh_token', (req, res) => {
     const { refresh_token } = req.query
     const buffer = Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`)
 
