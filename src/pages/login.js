@@ -1,5 +1,8 @@
 import styled from "styled-components/macro";
 
+
+const LOGIN_LINK = process.env.REACT_APP_LOGIN_LINK;
+console.log(LOGIN_LINK);
 const StyledLoginContainer = styled.main`
     display: flex;
     flex-direction: column;
@@ -19,7 +22,7 @@ const StyledLoginButton = styled.a`
 
 const Login = () => (
     <StyledLoginContainer>
-        <StyledLoginButton href="http://localhost:8080/api/login"> 
+        <StyledLoginButton href={LOGIN_LINK}> 
             Log In
         </StyledLoginButton>
     </StyledLoginContainer>

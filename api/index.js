@@ -23,8 +23,7 @@ app.get('/api',  (req, res) => {
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
-
-console.log(REDIRECT_URI);
+const FRONTEND_URL = process.env.FRONTEND_URL;
 
 // Generates a random string of 'length' size.
 const generateRandomString = (length) => {
@@ -87,7 +86,7 @@ app.get('/api/callback', (req, res) => {
                     expires_in
                 })
                 // redirect to the app again with the access and refresh tokens
-                res.redirect(`http://localhost:3000/?${params}`)
+                res.redirect(`${FRONTEND_URL}?${params}`)
 
                 // const { refresh_token } = response.data;
 

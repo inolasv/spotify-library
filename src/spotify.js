@@ -81,7 +81,7 @@ const refreshToken = async () => {
 
 
         // get the data from the endpoint
-        const { data } = await axios.get(`/refresh_token?refresh_token=${LOCAL_STORAGE_VALS.refreshToken}`);
+        const { data } = await axios.get(`/api/refresh_token?refresh_token=${LOCAL_STORAGE_VALS.refreshToken}`);
 
         // set local storage value
         window.localStorage.setItem(LOCAL_STORAGE_KEYS.accessToken, data.access_token);
